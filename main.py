@@ -136,7 +136,8 @@ def find_image_on_screen(template_path, threshold=0.8, window_bounds=None):
     else:
         return None
 
-
+def is_finished():
+    return find_image_on_screen("finished.png")
 def main_process():
     """
     主流程：启动iPhone镜像应用并查找目标图片
@@ -152,6 +153,9 @@ def loop_process():
     count = 0
     day = 0
     while count < 30:
+        if is_finished():
+            print("任务完成")
+            break
         # 查找图片位置（在窗口内优先匹配）
         position = find_image_on_screen("success.png")
         if not position:
