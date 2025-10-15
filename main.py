@@ -138,7 +138,7 @@ def find_image_on_screen(template_path, threshold=0.8, window_bounds=None):
         return None
 
 def is_finished():
-    return find_image_on_screen("finished.png")
+    return find_image_on_screen("images/finished.png")
 def main_process():
     """
     主流程：启动iPhone镜像应用并查找目标图片
@@ -158,13 +158,13 @@ def loop_process():
             print("任务完成")
             break
         # 查找图片位置（在窗口内优先匹配）
-        position = find_image_on_screen("success.png")
+        position = find_image_on_screen("images/success.png")
         if not position:
             # 判断是否在直播界面
-            if find_image_on_screen("guan-zhu.png"):
+            if find_image_on_screen("images/guan-zhu.png"):
                 print("进入了直播界面")
                 # 直播界面，查找关闭按钮
-                position = find_image_on_screen("gz-close.png")
+                position = find_image_on_screen("images/gz-close.png")
                 if position:
                     pyautogui.click(position)
                     print(f"已关闭直播 {position}")
@@ -181,7 +181,7 @@ def loop_process():
         pyautogui.click(position)
         time.sleep(1)
         # 查找并点击领取奖励
-        reward_position = find_image_on_screen("reward.png")
+        reward_position = find_image_on_screen("images/reward.png")
         if reward_position:
             print(f"领取奖励位置(逻辑坐标): {reward_position}")
             pyautogui.click(reward_position)
@@ -190,7 +190,7 @@ def loop_process():
             print("未找到领取奖励按钮")
         # 查找喇叭图标
 
-        horn_position = find_image_on_screen("speaker.png")
+        horn_position = find_image_on_screen("images/speaker.png")
         print(f"喇叭图标位置(逻辑坐标): {horn_position}")
         if horn_position:
             print(f"点击喇叭图标(逻辑坐标): {horn_position}")
