@@ -1,5 +1,6 @@
 import subprocess
 import time
+import random
 import cv2
 import numpy as np
 from PIL import Image, ImageGrab
@@ -152,7 +153,7 @@ def main_process():
 def loop_process():
     count = 0
     day = 0
-    while count < 30:
+    while count < 90:
         if is_finished():
             print("任务完成")
             break
@@ -166,15 +167,17 @@ def loop_process():
                 position = find_image_on_screen("gz-close.png")
                 if position:
                     pyautogui.click(position)
-                    print("已关闭直播")
+                    print(f"已关闭直播 {position}")
                     continue
                 else:
-                    print("未找到关闭按钮")
+                    print("未找到关闭按钮,尝试点击固定位置(567,236)")
+                    pyautogui.click((567, 236))
                 continue
             print("广告未播放完毕，继续等待ing")
             time.sleep(5)
             continue
-        print(f"成功图片位置(逻辑坐标): {position}")
+        print(f"成功图片位置(逻辑坐标): {position} ,随机延迟1-10秒")
+        time.sleep(random.randint(1, 10))
         pyautogui.click(position)
         time.sleep(1)
         # 查找并点击领取奖励
@@ -200,7 +203,7 @@ def loop_process():
         if count % 3 == 0:
             day += 1
             print(f"已解锁{day}天会员")
-            time.sleep(30)
+            time.sleep(1)
 
 
 if __name__ == '__main__':
