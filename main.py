@@ -188,6 +188,7 @@ def loop_process():
             time.sleep(2)
         else:
             print("未找到领取奖励按钮")
+            continue
         # 查找喇叭图标
 
         horn_position = find_image_on_screen("images/speaker.png")
