@@ -3,17 +3,18 @@ import random
 import pyautogui
 
 
-from screen import find_image_on_screen,countdown
+from screen import find_image_on_screen,countdown,click_qi_shui_icon
 
 def is_finished():
     return find_image_on_screen("images/qishui/finished.png")
-
 
 def qishui_ad():
     """
     主流程：启动iPhone镜像应用并查找目标图片
     """
-    
+    click_qi_shui_icon()
+    countdown(5)
+
     
     # loop_process()
     
@@ -27,6 +28,12 @@ def loop_process():
         # 查找图片位置（在窗口内优先匹配）
         position = find_image_on_screen("images/qishui/success.png")
         if not position:
+            # 判断是否广告未成功加载
+            retry = find_image_on_screen("images/qishui/retry.png")
+            if retry:
+                print("广告未加载完成")
+                pyautogui.click(retry)
+                continue
             # 判断是否在直播界面
             if find_image_on_screen("images/qishui/guan-zhu.png"):
                 print("进入了直播界面")
@@ -43,8 +50,9 @@ def loop_process():
             print("广告未播放完毕，继续等待ing")
             time.sleep(5)
             continue
-        print(f"成功图片位置(逻辑坐标): {position} ,随机延迟1-10秒")
-        time.sleep(random.randint(1, 10))
+        print(f"成功图片位置(逻辑坐标): {position} ,随机延迟1-5秒")
+        sec = random.randint(1, 5)
+        countdown(sec)
         pyautogui.click(position)
         time.sleep(1)
         # 查找并点击领取奖励

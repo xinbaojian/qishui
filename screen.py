@@ -102,6 +102,7 @@ def click_qi_shui_icon():
         print(f"已点击汽水音乐图标 {icon_pos}")
     else:
         print("未找到汽水音乐图标")
+        return
 
 
 def countdown(times=1):
@@ -122,6 +123,8 @@ def un_lock():
     while True :
         # 输入密码
         typepwd_pos = find_image_on_screen("images/typepwd.png")
+        if not typepwd_pos:
+            typepwd_pos = find_image_on_screen("images/typepwd1.png")
         if not typepwd_pos:
             print("未找到输入密码界面")
             time.sleep(3)

@@ -1,13 +1,14 @@
 import sys
-from qishui import qishui_ad
+from qishui import qishui_ad,loop_process
 from screen import un_lock
 
 
 if __name__ == '__main__':
-    un_lock()
+    # un_lock()
     if len(sys.argv) > 1:
         if sys.argv[1] == 'qishui':
-            qishui_ad()
+            # qishui_ad()
+            loop_process()
         if sys.argv[1] == 'xima':
             print("xiaomi ad")
     else:
