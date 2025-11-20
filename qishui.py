@@ -3,7 +3,7 @@ import random
 import pyautogui
 
 
-from screen import find_image_on_screen,countdown,click_qi_shui_icon
+from screen import find_image_on_screen,countdown,click_qi_shui_icon,call_iphone
 
 def is_finished():
     return find_image_on_screen("images/qishui/finished.png")
@@ -12,7 +12,8 @@ def qishui_ad():
     """
     主流程：启动iPhone镜像应用并查找目标图片
     """
-    click_qi_shui_icon()
+    # click_qi_shui_icon()
+    call_iphone()
     countdown(5)
 
     
