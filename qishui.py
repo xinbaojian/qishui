@@ -29,6 +29,8 @@ def loop_process():
         # 查找图片位置（在窗口内优先匹配）
         position = find_image_on_screen("images/qishui/success.png")
         if not position:
+            position = find_image_on_screen("images/qishui/success1.png")
+        if not position:
             # 判断是否广告未成功加载
             retry = find_image_on_screen("images/qishui/retry.png")
             if retry:
@@ -45,8 +47,8 @@ def loop_process():
                     print(f"已关闭直播 {position}")
                     continue
                 else:
-                    print("未找到关闭按钮,尝试点击固定位置(567,236)")
-                    pyautogui.click((567, 236))
+                    print("未找到关闭按钮,尝试点击固定位置(295,143)")
+                    pyautogui.click((295, 143))
                 continue
             print("广告未播放完毕，继续等待ing")
             time.sleep(5)
@@ -58,6 +60,8 @@ def loop_process():
         time.sleep(1)
         # 查找并点击领取奖励
         reward_position = find_image_on_screen("images/qishui/reward.png")
+        if not reward_position:
+            reward_position = find_image_on_screen("images/qishui/reward1.png")
         if reward_position:
             print(f"领取奖励位置(逻辑坐标): {reward_position}")
             pyautogui.click(reward_position)

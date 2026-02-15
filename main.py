@@ -1,7 +1,7 @@
 import sys
 from qishui import qishui_ad,loop_process
-from screen import un_lock
-
+from screen import find_image_on_screen
+import pyautogui
 
 if __name__ == '__main__':
     # un_lock()
@@ -11,5 +11,10 @@ if __name__ == '__main__':
             loop_process()
         if sys.argv[1] == 'xima':
             print("xiaomi ad")
+        if sys.argv[1] == 'test':
+            position = find_image_on_screen("images/qishui/gz-close.png")
+            print(position)
+            # pyautogui.moveTo(position)
+            pyautogui.click(position)
     else:
         print("使用方法: python3 main.py qishui")
