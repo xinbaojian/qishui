@@ -66,10 +66,10 @@ def loop_process():
                 pyautogui.click(retry)
                 continue
             # 判断是否在直播界面
-            if get_cached_coordinate("guan-zhu.png"):
+            if get_cached_coordinate("guan-zhu.png",force_refresh=True):
                 print("进入了直播界面")
                 # 直播界面，查找关闭按钮
-                position = get_cached_coordinate("gz-close.png")
+                position = get_cached_coordinate("gz-close.png",force_refresh=True)
                 if position:
                     pyautogui.click(position)
                     print(f"已关闭直播 {position}")
