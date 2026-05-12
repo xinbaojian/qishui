@@ -16,7 +16,7 @@ def get_cached_coordinate(*image_paths, force_refresh=False):
         force_refresh: 是否强制刷新缓存
     返回:
         找到的第一个有效坐标，如果没有找到则返回None
-    """ 
+    """
     prefix = "images/qishui/"
     for image_name in image_paths:
         image_path = prefix + image_name
@@ -46,9 +46,9 @@ def qishui_ad():
     call_iphone()
     countdown(5)
 
-    
+
     # loop_process()
-    
+
 def loop_process():
     count = 0
     day = 0
@@ -87,7 +87,7 @@ def loop_process():
         pyautogui.click(position)
         time.sleep(1)
         # 查找并点击领取奖励
-        reward_position = get_cached_coordinate("reward.png", "reward1.png")
+        reward_position = get_cached_coordinate("reward2.png","reward.png", "reward1.png")
         if reward_position:
             print(f"领取奖励位置(逻辑坐标): {reward_position}")
             pyautogui.click(reward_position)
