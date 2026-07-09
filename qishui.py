@@ -100,7 +100,7 @@ def _handle_livestream() -> bool:
 
 def _try_claim_reward() -> bool:
     """尝试领取奖励并点击喇叭。返回 True 表示成功领取奖励。"""
-    reward_pos = get_cached_coordinate("reward.png")
+    reward_pos = get_cached_coordinate("reward1.png")
     if not reward_pos:
         print("未找到领取奖励按钮")
         return False
